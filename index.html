@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Eagle VS. Black Panther</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="uploadScreen" class="screen active">
+      <h2>1. Upload your Photo</h2>
+      <input type="file" id="imageUpload" accept="image/*" />
+    </div>
+
+    <div id="cropScreen" class="screen">
+      <h2>2. Crop your image</h2>
+      <div id="cropContainer">
+        <img id="imagePreview" style="max-width: 100%; display: none" />
+      </div>
+      <div id="cropButtonContainer">
+        <button id="cropBtn">Crop Image</button>
+      </div>
+    </div>
+
+    <div id="frameScreen" class="screen">
+      <h2>3. Select your Team</h2>
+      <div class="content-container">
+        <canvas id="framePreview"></canvas>
+      </div>
+      <div class="frames">
+        <img
+          src="assets/frames/frame1.png"
+          class="frame-option"
+          onclick="applyFrame('assets/frames/frame1.png')"
+          alt="Frame 1"
+        />
+        <img
+          src="assets/frames/frame2.png"
+          class="frame-option"
+          onclick="applyFrame('assets/frames/frame2.png')"
+          alt="Frame 2"
+        />
+      </div>
+      <div class="button-container">
+        <button id="confirmFrameBtn">Confirm</button>
+      </div>
+    </div>
+
+    <div id="downloadScreen" class="screen">
+      <h2>4. Save your Image</h2>
+      <canvas id="finalCanvas"></canvas>
+      <button id="saveBtn">Download</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
