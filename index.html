@@ -3,63 +3,327 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>White Eagle VS. Black Panther</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <title>Show Your Team Spirit - Intramurals 2024</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        background-color: #222;
+        color: #fff;
+        padding: 20px 0;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        margin: 5px 10px;
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease;
+      }
+      .nav-links a:hover {
+        color: #ffd700;
+      }
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("assets/bg/bpwe.jpg") no-repeat center center/cover;
+        color: #fff;
+        padding: 60px 0;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+      .hero p {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+      .cta-button {
+        display: inline-block;
+        background-color: #ffd700;
+        color: #222;
+        padding: 12px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .cta-button:hover {
+        background-color: #fff;
+        color: #222;
+      }
+      .features,
+      .teams,
+      .how-it-works {
+        padding: 60px 0;
+      }
+      .features,
+      .how-it-works {
+        background-color: #fff;
+      }
+      .teams {
+        background-color: #f4f4f4;
+      }
+      .feature-grid,
+      .team-grid,
+      .step-grid {
+        display: grid;
+        gap: 30px;
+      }
+      .feature-item,
+      .team-item,
+      .step-item {
+        text-align: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+      }
+      .feature-item:hover,
+      .team-item:hover {
+        transform: translateY(-10px);
+      }
+      .feature-icon,
+      .team-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .white-eagle {
+        color: #ffd700;
+      }
+      .black-panther {
+        color: #222;
+      }
+      .step-number {
+        font-size: 36px;
+        font-weight: bold;
+        color: #ffd700;
+        margin-bottom: 10px;
+      }
+      footer {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 28px;
+        }
+        .hero p {
+          font-size: 16px;
+        }
+        .feature-grid,
+        .team-grid,
+        .step-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-links {
+          margin-top: 10px;
+        }
+        .nav-links a {
+          margin: 5px 10px 5px 0;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .feature-grid,
+        .step-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .team-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="uploadScreen" class="screen active">
-      <h2>1. Upload your Photo</h2>
-      <label for="imageUpload" class="upload-image">
-        <img src="assets/icons/upload.png" alt="Upload" />
-      </label>
-      <input type="file" id="imageUpload" accept="image/*" />
-    </div>
+    <header>
+      <nav class="container">
+        <div class="logo">MI-CM Intramurals 2024</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#teams">Teams</a>
+          <a href="#how-it-works">How It Works</a>
+        </div>
+      </nav>
+    </header>
 
-    <div id="cropScreen" class="screen">
-      <h2>2. Crop your image</h2>
-      <div id="cropContainer">
-        <img id="imagePreview" style="max-width: 100%; display: none" />
+    <section class="hero">
+      <div class="container">
+        <h1>Show Your Team Spirit!</h1>
+        <p>
+          Create your team-themed profile picture for MI-CM Intramurals 2024
+        </p>
+        <a href="app.html" class="cta-button">Get Started</a>
       </div>
-      <div id="cropButtonContainer">
-        <button id="cropBtn">Crop Image</button>
-      </div>
-    </div>
+    </section>
 
-    <div id="frameScreen" class="screen">
-      <h2>3. Select your Team</h2>
-      <div class="content-container">
-        <canvas id="framePreview"></canvas>
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Why Join the Spirit?</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <div class="feature-icon">🎨</div>
+            <h3>Custom Team Frames</h3>
+            <p>Choose between White Eagle and Black Panther themed frames.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🌟</div>
+            <h3>Show Your Support</h3>
+            <p>Let everyone know which team you're rooting for!</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🚀</div>
+            <h3>Easy to Use</h3>
+            <p>Create your team spirit profile pic in just a few clicks.</p>
+          </div>
+        </div>
       </div>
-      <div class="frames">
-        <img
-          src="assets/frames/frame1.png"
-          class="frame-option"
-          onclick="applyFrame('assets/frames/frame1.png')"
-          alt="Frame 1"
-        />
-        <img
-          src="assets/frames/frame2.png"
-          class="frame-option"
-          onclick="applyFrame('assets/frames/frame2.png')"
-          alt="Frame 2"
-        />
-      </div>
-      <div class="button-container">
-        <button id="confirmFrameBtn">Confirm</button>
-      </div>
-    </div>
+    </section>
 
-    <div id="downloadScreen" class="screen">
-      <h2>4. Save your Image</h2>
-      <canvas id="finalCanvas"></canvas>
-      <button id="saveBtn">Download</button>
-    </div>
+    <section id="teams" class="teams">
+      <div class="container">
+        <h2>Choose Your Team</h2>
+        <div class="team-grid">
+          <div class="team-item">
+            <div class="team-icon white-eagle">🦅</div>
+            <h3>White Eagle</h3>
+            <p>Soaring high with determination and strength.</p>
+            <a href="app.html" class="cta-button">Support White Eagle</a>
+          </div>
+          <div class="team-item">
+            <div class="team-icon black-panther">🐆</div>
+            <h3>Black Panther</h3>
+            <p>Swift, agile, and ready to pounce on victory.</p>
+            <a href="app.html" class="cta-button">Support Black Panther</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-    <script src="script.js"></script>
+    <section id="how-it-works" class="how-it-works">
+      <div class="container">
+        <h2>How It Works</h2>
+        <div class="step-grid">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <h3>Upload Your Photo</h3>
+            <p>Choose a clear, front-facing photo of yourself.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <h3>Select Your Team</h3>
+            <p>Pick either White Eagle or Black Panther frame.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <h3>Generate & Share</h3>
+            <p>Get your new profile pic and share it on social media!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>Made by Clark Joy Pesco | BSIT Department</p>
+      </div>
+    </footer>
+
+    <script>
+      gsap.from(".hero h1", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out",
+      });
+      gsap.from(".hero p", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.3,
+        ease: "power3.out",
+      });
+      gsap.from(".cta-button", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        delay: 0.6,
+        ease: "power3.out",
+      });
+
+      gsap.from(".feature-item", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".features",
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".team-item", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".teams",
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".step-item", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".how-it-works",
+          start: "top 80%",
+        },
+      });
+    </script>
   </body>
 </html>
