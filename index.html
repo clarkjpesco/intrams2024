@@ -52,11 +52,25 @@
       .nav-links a:hover {
         color: #ffd700;
       }
-      .hero {
+
+      /* .hero {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-          url("assets/bg/bpwe.jpg") no-repeat center center/cover;
+          url("assets/bg/webp.jpg") no-repeat center center/cover;
         color: #fff;
         padding: 60px 0;
+        text-align: center;
+      } */
+      .hero {
+        height: 100vh;
+        background-image: url("assets/bg/webp.jpg");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
         text-align: center;
       }
       .hero h1 {
