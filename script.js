@@ -89,10 +89,50 @@ document
     };
   });
 
-document.getElementById("saveBtn").addEventListener("click", function () {
+function downloadImage() {
   const finalCanvas = document.getElementById("finalCanvas");
-  const link = document.createElement("a");
-  link.href = finalCanvas.toDataURL("image/png");
-  link.download = "framed-image.png";
-  link.click();
-});
+  const imageDataUrl = finalCanvas.toDataURL("image/jpeg");
+
+  // Function to download the image
+  const downloadUsingBlobAndObjectURL = () => {
+    fetch(imageDataUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const blobUrl = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = blobUrl;
+        link.download = "framed-image.jpg";
+
+        // Append to the document and trigger click
+        document.body.appendChild(link);
+        link.click();
+
+        // Clean up
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+      });
+  };
+
+  // Check if it's iOS
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (isIOS) {
+    // For iOS devices, open the image in a new tab
+    window.open(imageDataUrl);
+  } else {
+    // For other devices, use the Blob and Object URL method
+    downloadUsingBlobAndObjectURL();
+  }
+}
+
+// Attach the function to the button click event
+document.getElementById("saveBtn").addEventListener("click", downloadImage);
+
+// document.getElementById("saveBtn").addEventListener("click", function () {
+//   const finalCanvas = document.getElementById("finalCanvas");
+//   const link = document.createElement("a");
+//   link.href = finalCanvas.toDataURL("image/png");
+//   link.download = "framed-image.png";
+//   link.click();
+// });
